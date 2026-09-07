@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from .models import Page
+from .models import Page, Like
 # Create your views here.
 
 def editor(request):
@@ -17,7 +17,8 @@ def index(request):
 	return render(request, "index.html", { "pages": pages })
 def view_page(request, id):
 	page = get_object_or_404(Page, pk=id)
-	return render(request, "page.html", { "title": page.title, "content": page.content, "id": id })
+	like_count = page.like_set.count()
+	return render(request, "page.html", { "title": page.title, "content": page.content, "id": id, "like_count": like_count })
 
 def savePage(request):
 	if request.method =="POST":
@@ -28,3 +29,10 @@ def savePage(request):
 		content=content)
 	return redirect("/wiki/")
 
+def like_page(request, id):
+	page = get_object_or_404(Page, pk=id)
+
+	if request.method == "POST":
+        	like = Like(page=page)
+        	like.save()
+	return redirect("/wiki/page/" + str(id) + "/")

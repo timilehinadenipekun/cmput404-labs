@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }} | Likes</title>
+    </head>
+    <body>
+        <h1>Likes for {{ title }}</h1>
+        <ol>
+            {% for like_date in likes %}
+                <li>{{ like_date }}</li>
+            {% endfor %}
+        </ol>
+        <br>
+        <a href="/wiki/page/{{ id }}/">&lt; Go Back</a>
+    </body>
+</html>
+
