@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body> 
+        <div id="content" style="display: none;">{{ content }}</div>
+        <div>
+            <a href="/wiki/">&lt; Go Back</a>
+        </div>
+    </body>
+    <script src="{% static 'markdown-renderer.min.js' %}"></script> <!-- Load bundled JS -->
+</html>

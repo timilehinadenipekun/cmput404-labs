@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Wiki | Home</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Timilehin's Wiki Pages</h1>
+        <a href="/wiki/add/">Add Article</a><br>
+        <ul>
+            {% for page in pages %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
+
