@@ -36,3 +36,15 @@ def like_page(request, id):
         	like = Like(page=page)
         	like.save()
 	return redirect("/wiki/page/" + str(id) + "/")
+
+def view_likes(request, id):
+	page = get_object_or_404(Page, pk=id)
+	like_objects = Like.objects.filter(page=page)
+	likes = []
+	for like in like_objects:
+        	likes.append(str(like.created_at))
+	return render(request, "likes.html", {
+        	"id": id,
+        	"title": page.title,
+        	"likes": likes
+    })
