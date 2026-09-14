@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Wiki Page</title>
+</head>
+<body>
+    <h1>Welcome to the Wiki App!</h1>
+
+    <div id="emoji-picker"></div>
+    <br>
+
+    <form id="save-form" method="POST" action="/wiki/save/">
+        <input type="text" name="title" id="page-title" placeholder="Page Title"><br>
+        <textarea id="markdown-editor" name="content" rows="10" cols="50"></textarea><br>
+        <button id="convert-btn">Convert to HTML</button><br>
+        <br>
+        <button id="save-btn" type="submit">Save Page</button>
+        {% csrf_token %}
+    </form>
+
+    <h3>Output</h3>
+    <div id="markdown-output"></div> <!-- Rendered HTML output -->
+
+    <script src="{% static 'markdown-editor.min.js' %}"></script>
+    <script src="{% static 'emoji-editor.min.js' %}"></script>
+</body>
+</html>

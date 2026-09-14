@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "emoji-mart": "^5.6.0",
+    "esbuild": "^0.28.2",
+    "marked": "^18.0.11"
+  }
+}
